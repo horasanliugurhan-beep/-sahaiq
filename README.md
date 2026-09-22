@@ -1,52 +1,56 @@
 # SahaIQ
 
-**AI-assisted Sales Intelligence & Field CRM**
+**Open Sales Intelligence & Field CRM**
 
-SahaIQ is an open-source project for turning sales data into customer priorities, risk signals and next-best actions. It is designed for field sales teams that need more than a static dashboard.
+SahaIQ turns sales data into customer segments, risk signals and explainable next-best actions.
 
-> Public edition by **Uğurhan Horasanlı**. This repository uses demo/synthetic data only and contains no employer, customer or confidential production data.
+Built by **Uğurhan Horasanlı** as a reusable, vendor-neutral public edition of a field-sales intelligence concept.
 
-## Planned capabilities
+## What works today
 
-- Customer 360 and sales timeline
-- RFM and ABC segmentation
-- YoY trend and account-risk signals
-- Rule-based next-best-action engine
-- Visit, route and task management
-- Product / brand / category opportunity analysis
-- Excel and CSV import with configurable column mapping
-- Optional AI-assisted account summaries
-- Pluggable data-source connectors
-- Qlik Cloud integration (planned)
+- RFM customer scoring and segmentation
+- Explainable rule-based action engine
+- Sales decline and follow-up signals
+- Synthetic demo dashboard
+- CSV import and configurable field mapping
+- Normalized customer/sales schema
+- Server-side Qlik Cloud REST connection test
+- Qlik app metadata adapter
+- QIX JSON-RPC / hypercube extraction foundation
+- Automated core/import/Qlik/QIX tests
+- Secret-safe environment template
 
-## Qlik integration architecture
+## Run locally
 
-SahaIQ will not require tenant URLs, API keys or credentials to be stored in the repository.
+~~~bash
+npm install
+npm test
+npm run dev
+~~~
 
-```
-Qlik Cloud
-   ↓
-Connector / Auth
-   ↓
-Dataset mapping
-   ↓
-Normalized SahaIQ model
-   ↓
-Analytics + Action Engine
-```
+Open the local Next.js URL, then use **Import** for your own CSV data.
 
-Each deployment will supply its own credentials through environment variables or an external secret store.
+## Data model
+
+Required: `customer_id`, `customer_name`, `date`, `quantity`
+
+Optional: `revenue`, `product`, `brand`, `region`
+
+## Qlik Cloud
+
+SahaIQ keeps Qlik credentials server-side. Configure runtime values in `.env.local` using `.env.example`. See `docs/QLIK.md` and `docs/QLIK-MAPPING.md`.
+
+Qlik-specific fields are mapped into SahaIQ's vendor-neutral schema, so the CRM is not tied to one company or app.
+
+## Privacy & security
+
+This public repository contains synthetic demo data only. Never commit production exports, database files, tenant URLs, API keys, OAuth secrets or customer information.
 
 ## Status
 
-Early public productization. The production-inspired private prototype is being generalized into a reusable edition with synthetic demo data and vendor-neutral terminology.
-
-## Security
-
-Never commit real customer exports, database files, tenant credentials, API keys or authentication secrets. See `.env.example` for supported configuration placeholders.
+Public alpha. Core analytics and connector foundations are implemented; production deployments should validate their own authorization, persistence and data-governance requirements.
 
 ## Author
 
-**Uğurhan Horasanlı**
-
+**Uğurhan Horasanlı**  
 Sales intelligence, automation and applied AI projects.
