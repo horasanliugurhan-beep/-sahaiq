@@ -1,0 +1,4 @@
+customer_id,customer_name,date,quantity,revenue,product,brand,region
+C001,Northstar Auto,2026-09-01,24,14800,All Season 205/55R16,DemoBrand A,North
+C002,Atlas Mobility,2026-09-03,12,7900,Summer 195/65R15,DemoBrand B,West
+C003,Nova Wheels,2026-09-07,31,20150,SUV 225/60R18,DemoBrand C,Central
